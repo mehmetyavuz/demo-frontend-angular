@@ -41,5 +41,5 @@
     "ngx-webstorage": "^9.0.0",
     "typescript": "~4.5.2"
   },
-  "engines": { "node": "12.14.1", "npm": "6.13.4" }
+  "engines": { "node": "16.13.2", "npm": "8.1.2" }
 }
