@@ -13,7 +13,7 @@ export class AuthService {
 
   private url = 'http://localhost:8080/';
 
-  constructor(private httpClient: HttpClient, private localStorageService: LocalStorageService) {
+  constructor(private httpClient: HttpClient, private $localStorage: LocalStorageService) {
   }
 
   register(registerPayload: RegisterPayload): Observable<any> {
@@ -22,18 +22,20 @@ export class AuthService {
 
   login(loginPayload: LoginPayload): Observable<boolean> {
     return this.httpClient.post<JwtAutResponse>(this.url + 'api/auth/login', loginPayload).pipe(map(data => {
-      this.localStorageService.store('authenticationToken', data.authenticationToken);
-      this.localStorageService.store('username', data.username);
+      this.$localStorage.store('authenticationToken', data.authenticationToken);
+      this.$localStorage.store('username', data.username);
       return true;
     }));
   }
 
   isAuthenticated(): Boolean {
-    return this.localStorageService.retrieve('username') != null;
+    return this.$localStorage.retrieve('username') != null;
   }
 
   logout() {
-    this.localStorageService.clear('authenticationToke');
-    this.localStorageService.clear('username');
+    this.$localStorage.clear();
+    // this.$localStorage.clear('authenticationToke');
+    // this.$localStorage.clear('username');
+    console.log('localstorage cleared..');
   }
 }
