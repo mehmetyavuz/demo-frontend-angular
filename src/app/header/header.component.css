@@ -1,0 +1,14 @@
+.header {
+  padding: 5px 10px;
+  background: royalblue;
+}
+.title {
+  color: aliceblue;
+  text-decoration: none;
+}
+.btn-bar {
+  float: right;
+  color: aliceblue;
+  text-decoration: none;
+  margin-top: 10px;
+}
